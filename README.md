@@ -4,10 +4,10 @@
   Author             :   FIRAT DEVECI                       
   Web Site           :   www.firatdeveci.com                
  
-  This is very, tiny Modbus RTU Slave library for small     
-  microcontrollers. It supports Modbus 3-6 and 16 functions!
+  This is very, tiny Modbus RTU Slave library for small microcontrollers. It supports Modbus 3-6 and 16 functions!
   Easy to use! Examples with PIC and ARM Microcontrollers!  
  
   It's free to use with non-commercial projects.            
-  Of course you can not blame me after your project dies    
-  when using my codes wrong :)                              
+  Of course you can not blame me after your project died when using my codes wrong :)                              
+
+  For support please give feedback for it!
