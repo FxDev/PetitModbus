@@ -1,10 +1,3 @@
-# PetitModbus
-Mini Modbus RTU Library for Small Microcontrollers
-
-/*                          \\\|///
- *                        \\  - -  //
- *                         (  @ @  )
- * +---------------------oOOo-(_)-oOOo-------------------------+
  * | Project Name       :   Petit Modbus RTU                   |
  * | Project Version    :   Ver 1.0                            |
  * | Last Compile Date  :   27.07.2016                         |
@@ -18,11 +11,3 @@ Mini Modbus RTU Library for Small Microcontrollers
  * | It's free to use with non-commercial projects.            |
  * | Of course you can not blame me after your project dies    |
  * | when using my codes wrong :)                              |
- * |                                                           |
- * |                                                           |
- * |                             Oooo                          |
- * +-----------------------oooO--(   )-------------------------+
- *                        (   )   ) /
- *                         \ (   (_/
- *                          \_)
-*/
