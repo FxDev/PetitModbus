@@ -2,6 +2,8 @@
 #include "PetitModbus.h"
 #include "PetitModbusPort.h"
 
+// This port file for PIC microcontrollers!
+
 // Modbus RTU Variables
 volatile unsigned char   PetitReceiveBuffer[PETITMODBUS_RECEIVE_BUFFER_SIZE];   // Buffer to collect data from hardware
 volatile unsigned char   PetitReceiveCounter=0;                                 // Collected data number
