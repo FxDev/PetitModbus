@@ -11,12 +11,14 @@ volatile unsigned char   PetitReceiveCounter=0;                                 
 // UART Initialize for Microconrollers, yes you can use another phsycal layer!
 void PetitModBus_UART_Initialise(void)
 {
+// Insert UART Init Code Here
     InitUART();
 }
 
 // Timer Initialize for Petit Modbus, 1ms Timer will be good for us!
 void PetitModBus_TIMER_Initialise(void)
 {
+// Insert TMR Init Code Here
     InitTMR1();
 }
 
