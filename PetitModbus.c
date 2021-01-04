@@ -115,12 +115,13 @@ unsigned char PetitSendMessage(void)
  * Function Name        : HandleModbusError
  * @How to use          : This function generated errors to Modbus Master
  */
-void HandlePetitModbusError(char ErrorCode)
+void HandlePetitModbusError(char Function, char ErrorCode)
 {
     // Initialise the output buffer. The first byte in the buffer says how many registers we have read
-    Petit_Tx_Data.Function    = ErrorCode | 0x80;
+    Petit_Tx_Data.Function    = Function | 0x80;
     Petit_Tx_Data.Address     = PETITMODBUS_SLAVE_ADDRESS;
-    Petit_Tx_Data.DataLen     = 0;
+    Petit_Tx_Data.DataLen     = 1;
+    Petit_Tx_Data.DataBuf[0]  = ErrorCode;
     PetitSendMessage();
 }
 
@@ -146,7 +147,7 @@ void HandlePetitModbusReadHoldingRegisters(void)
 
     // If it is bigger than RegisterNumber return error to Modbus Master
     if((Petit_StartAddress+Petit_NumberOfRegisters)>NUMBER_OF_OUTPUT_PETITREGISTERS)
-        HandlePetitModbusError(PETIT_ERROR_CODE_02);
+        HandlePetitModbusError(PETITMODBUS_READ_HOLDING_REGISTERS, PETIT_ERROR_CODE_02);
     else
     {
         // Initialise the output buffer. The first byte in the buffer says how many registers we have read
@@ -194,7 +195,7 @@ void HandlePetitModbusWriteSingleRegister(void)
     Petit_Tx_Data.DataLen     = 4;
 
     if(Petit_Address>=NUMBER_OF_OUTPUT_PETITREGISTERS)
-        HandlePetitModbusError(PETIT_ERROR_CODE_03);
+        HandlePetitModbusError(PETITMODBUS_WRITE_SINGLE_REGISTER, PETIT_ERROR_CODE_03);
     else
     {
         PetitRegisters[Petit_Address].ActValue=Petit_Value;
@@ -230,7 +231,7 @@ void HandleMPetitodbusWriteMultipleRegisters(void)
 
     // If it is bigger than RegisterNumber return error to Modbus Master
     if((Petit_StartAddress+Petit_NumberOfRegisters)>NUMBER_OF_OUTPUT_PETITREGISTERS)
-        HandlePetitModbusError(PETIT_ERROR_CODE_03);
+        HandlePetitModbusError(PETITMODBUS_WRITE_SINGLE_REGISTER, PETIT_ERROR_CODE_03);
     else
     {
         // Initialise the output buffer. The first byte in the buffer says how many outputs we have set
@@ -439,15 +440,15 @@ void ProcessPetitModbus(void)
             switch (Petit_Rx_Data.Function)                                     // Data is for us but which function?
             {
                 #if PETITMODBUS_READ_HOLDING_REGISTERS_ENABLED > 0
-                case PETITMODBUS_READ_HOLDING_REGISTERS:    {   HandlePetitModbusReadHoldingRegisters();        break;  }
+                case PETITMODBUS_READ_HOLDING_REGISTERS:    {   HandlePetitModbusReadHoldingRegisters();                                break;  }
                 #endif
                 #if PETITMODBUSWRITE_SINGLE_REGISTER_ENABLED > 0
-                case PETITMODBUS_WRITE_SINGLE_REGISTER:     {   HandlePetitModbusWriteSingleRegister();         break;  }
+                case PETITMODBUS_WRITE_SINGLE_REGISTER:     {   HandlePetitModbusWriteSingleRegister();                                 break;  }
                 #endif
                 #if PETITMODBUS_WRITE_MULTIPLE_REGISTERS_ENABLED > 0
-                case PETITMODBUS_WRITE_MULTIPLE_REGISTERS:  {   HandleMPetitodbusWriteMultipleRegisters();      break;  }
+                case PETITMODBUS_WRITE_MULTIPLE_REGISTERS:  {   HandleMPetitodbusWriteMultipleRegisters();                              break;  }
                 #endif
-                default:                                    {   HandlePetitModbusError(PETIT_ERROR_CODE_01);    break;  }
+                default:                                    {   HandlePetitModbusError(Petit_Rx_Data.Function, PETIT_ERROR_CODE_01);    break;  }
             }
         }
     }
