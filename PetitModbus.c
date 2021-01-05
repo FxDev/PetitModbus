@@ -19,7 +19,6 @@
 
 #define PETIT_ERROR_CODE_01                     0x01                            // Function code is not supported
 #define PETIT_ERROR_CODE_02                     0x02                            // Register address is not allowed or write-protected
-#define PETIT_ERROR_CODE_03                     0x03                            // Some data values are out of range, invalid number of register
 
 unsigned char PETITMODBUS_SLAVE_ADDRESS         =1;
 
@@ -120,7 +119,8 @@ void HandlePetitModbusError(char ErrorCode)
     // Initialise the output buffer. The first byte in the buffer says how many registers we have read
     Petit_Tx_Data.Function    = ErrorCode | 0x80;
     Petit_Tx_Data.Address     = PETITMODBUS_SLAVE_ADDRESS;
-    Petit_Tx_Data.DataLen     = 0;
+    Petit_Tx_Data.DataLen     = 1;
+    Petit_Tx_Data.DataBuf[0]  = ErrorCode;
     PetitSendMessage();
 }
 
@@ -194,7 +194,7 @@ void HandlePetitModbusWriteSingleRegister(void)
     Petit_Tx_Data.DataLen     = 4;
 
     if(Petit_Address>=NUMBER_OF_OUTPUT_PETITREGISTERS)
-        HandlePetitModbusError(PETIT_ERROR_CODE_03);
+        HandlePetitModbusError(PETIT_ERROR_CODE_02);
     else
     {
         PetitRegisters[Petit_Address].ActValue=Petit_Value;
@@ -230,7 +230,7 @@ void HandleMPetitodbusWriteMultipleRegisters(void)
 
     // If it is bigger than RegisterNumber return error to Modbus Master
     if((Petit_StartAddress+Petit_NumberOfRegisters)>NUMBER_OF_OUTPUT_PETITREGISTERS)
-        HandlePetitModbusError(PETIT_ERROR_CODE_03);
+        HandlePetitModbusError(PETIT_ERROR_CODE_02);
     else
     {
         // Initialise the output buffer. The first byte in the buffer says how many outputs we have set
