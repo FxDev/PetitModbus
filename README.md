@@ -1,6 +1,7 @@
   Project Name       :   Petit Modbus RTU                   
-  Project Version    :   Ver 1.0                            
-  Last Compile Date  :   27.07.2016                         
+  Project Version    :   Ver 1.1   
+  First Release Date :   27.07.2016
+  Last Compile Date  :   05.01.2021
   Author             :   FIRAT DEVECI                       
   Web Site           :   www.firatdeveci.com                
  
@@ -24,5 +25,8 @@
   
   I also have big ModBus RTU library, Master and Slave in one file.
   If you want to use this Modbus library please contact with me.
+  
+  V1.0 - First Release
+  V1.1 - Error Codes Problem is Solved
   
   info [@] firatdeveci.com
