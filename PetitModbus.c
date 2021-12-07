@@ -117,7 +117,7 @@ unsigned char PetitSendMessage(void)
 void HandlePetitModbusError(char ErrorCode)
 {
     // Initialise the output buffer. The first byte in the buffer says how many registers we have read
-    Petit_Tx_Data.Function    = ErrorCode | 0x80;
+    Petit_Tx_Data.Function    = Petit_Rx_Data.Function | 0x80;
     Petit_Tx_Data.Address     = PETITMODBUS_SLAVE_ADDRESS;
     Petit_Tx_Data.DataLen     = 1;
     Petit_Tx_Data.DataBuf[0]  = ErrorCode;
