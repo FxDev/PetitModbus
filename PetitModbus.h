@@ -1,6 +1,9 @@
-/*  PetitModbus Version 1.0
+/*  PetitModbus Version 1.2
  *  Author  :   Firat DEVECI
  *  Date    :   27.07.16
+ *  Version :   1.0 - First Release
+ *				1.1 - HandlePetitModbusError Fixed.
+ *				1.2 - HandlePetitModbusError Fixed Again :)
  *  
  *  Tips    :   If you want to use RS485 you have to use RX-Pull-Up Resistor!
  */
