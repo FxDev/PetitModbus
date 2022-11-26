@@ -20,6 +20,7 @@
   - MSP430
   - Atmega Series
   - Nuvoton MCUs
+  - Texas DSP
 
   For support please give feedback for it!
   
