@@ -27,6 +27,7 @@
   If you want to use this Modbus library please contact with me.
   
   V1.0 - First Release
+  
   V1.1 - Error Codes Problem is Solved
   
   info [@] firatdeveci.com
