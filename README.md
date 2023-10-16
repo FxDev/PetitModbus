@@ -12,7 +12,8 @@
   - Communications Send/Receive Functions
   - Tick Timer Functions
  
-  It's free to use with non-commercial projects.            
+  It's free to use with non-commercial projects. :)
+  It's "not free" for commercial projects! :(
   
   This library was tried these MCUs:
   - All of Microchip 8-16-32bit MCUs
