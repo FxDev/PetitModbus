@@ -1,9 +1,9 @@
   Project Name       :   Petit Modbus RTU                   
   Project Version    :   Ver 1.1   
-  First Release Date :   27.07.2016
-  Last Compile Date  :   05.01.2021
-  Author             :   FIRAT DEVECI                       
-  Web Site           :   www.firatdeveci.com                
+  First Release Date :   27.07.2016   
+  Last Compile Date  :   05.01.2021   
+  Author             :   FIRAT DEVECI   
+  Web Site           :   www.firatdeveci.com   
  
   This is very small, tiny Modbus RTU Slave library for small microcontrollers. It supports Modbus 3-6 and 16 functions!
   Easy to use, easy to port! Examples with PIC and ARM Microcontrollers! 
